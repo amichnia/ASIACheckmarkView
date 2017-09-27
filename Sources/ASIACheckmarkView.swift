@@ -59,7 +59,7 @@ open class ASIACheckmarkView: UIButton {
     fileprivate var checkmarkCircleLayer : CAShapeLayer?
     fileprivate var animating : Bool = false
     fileprivate let checkmarkEnd : CGFloat = 0.265
-    fileprivate let startAngle : CGFloat = CGFloat(-M_PI_2)/CGFloat(2)
+    fileprivate let startAngle : CGFloat = -CGFloat.pi/4
     
     fileprivate var animationFirstStep : TimeInterval {
         return self.animationTotalTime * TimeInterval(self.checkmarkEnd)
@@ -228,7 +228,7 @@ open class ASIACheckmarkView: UIButton {
             }
             
             let animation = CABasicAnimation(keyPath: "transform.rotation.z")
-            animation.toValue = 2 * M_PI
+            animation.toValue = 2 * CGFloat.NativeType.pi
             animation.duration = self.spinningFullDuration
             animation.isCumulative = true
             animation.isRemovedOnCompletion = false
@@ -266,7 +266,7 @@ open class ASIACheckmarkView: UIButton {
         }
         
         let rotation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotation.toValue = 2 * M_PI
+        rotation.toValue = 2 * CGFloat.NativeType.pi
         rotation.duration = duration
         rotation.isCumulative = true
         rotation.isRemovedOnCompletion = false
@@ -381,7 +381,7 @@ open class ASIACheckmarkView: UIButton {
         let radius = min(pathFrame.width,pathFrame.height) / 2 * self.rectFill
         let path = UIBezierPath()
         
-        let halCircle : CGFloat = CGFloat(M_PI)
+        let halCircle : CGFloat = CGFloat.pi
         path.addArc(withCenter: CGPoint(x: self.bounds.width/2, y: self.bounds.height/2), radius: radius, startAngle: startAngle, endAngle: startAngle + halCircle, clockwise: true)
         path.addArc(withCenter: CGPoint(x: self.bounds.width/2, y: self.bounds.height/2), radius: radius, startAngle: startAngle + halCircle, endAngle: startAngle, clockwise: true)
         
